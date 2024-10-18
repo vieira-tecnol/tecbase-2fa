@@ -10,6 +10,7 @@ class ValidateSecondFactorAuthRequest extends FormRequest
     {
         return [
             'document' => 'required|string',
+            'secret_key' => 'required|string',
         ];
     }
 }

@@ -20,7 +20,7 @@ class Tecbase2FA
             }
         }
 
-        return response()->json(['message' => __('exceptions.unauthenticated')], 401);
+        return response()->json(['message' => 'Usuário não autenticado'], 401);
     }
 
     public function setToken(ValidateSecondFactorAuthRequest $request)
@@ -28,12 +28,16 @@ class Tecbase2FA
         $user = new AuthenticableUser();
         $user->id = '';
 
+        if ($request->secret_key != env('TECBASE_SECRET_KEY')) {
+            return response()->json(['message' => 'Secret key inválida'], 401);
+        }
+
         $token = $user->createToken(
             'secondFactor' . '@' . $request->ip(), ['*'], now()->addHour()
         );
 
         $response = [
-            'message' => __('messages.successful_auth'),
+            'message' => 'Login realizado com sucesso',
             'access_token' => $token->plainTextToken,
             'expire_at' => now()->addHour(),
             'token_type' => 'Bearer'
