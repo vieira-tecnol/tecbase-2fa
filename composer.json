@@ -1,0 +1,21 @@
+{
+    "name": "vieira-tecnol/tecbase-2fa",
+    "description": "Two Factor Authentication using Tecbase",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Vitor Pimenta",
+            "email": "vitor.vieira@sistemastecnol.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "VieiraTecnol\\Tecbase2FA\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "laravel/sanctum": "^4.0"
+    }
+}
