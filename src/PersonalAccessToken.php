@@ -13,7 +13,6 @@ class PersonalAccessToken extends SanctumPersonalAccessToken
         $equivalentToken = $equivalentToken[1];
 
         return static::where('token', hash('sha256', $equivalentToken))
-            ->where('name', 'secondFactor' . '@' . $request->ip())
             ->where('expires_at', '>', now())
             ->first();
     }
