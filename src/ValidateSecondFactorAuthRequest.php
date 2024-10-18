@@ -9,7 +9,6 @@ class ValidateSecondFactorAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document' => 'required|string',
             'secret_key' => 'required|string',
         ];
     }
