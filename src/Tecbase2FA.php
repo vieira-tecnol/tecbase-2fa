@@ -42,6 +42,7 @@ class Tecbase2FA
             'expires_at' => now()->addHour(),
             'token_type' => 'Bearer',
             'user' => [
+                'id' => $request->id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'login' => $request->login,
