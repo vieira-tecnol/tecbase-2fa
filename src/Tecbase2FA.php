@@ -40,7 +40,22 @@ class Tecbase2FA
             'message' => 'Login realizado com sucesso',
             'access_token' => $token->plainTextToken,
             'expire_at' => now()->addHour(),
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
+            'user' => [
+                'name' => $request->name,
+                'email' => $request->email,
+                'login' => $request->login,
+                'ddd' => $request->ddd,
+                'phone' => $request->phone,
+                'document' => $request->document,
+                'type' => $request->type,
+                'section_id' => $request->section_id,
+                'area_id' => $request->area_id,
+                'token' => $request->token,
+                'data_creation_token' => $request->data_creation_token,
+                'authentication' => $request->authentication,
+                'active' => $request->active,
+            ]
         ];
 
         return response()->json($response);
