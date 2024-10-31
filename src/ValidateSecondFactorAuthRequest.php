@@ -10,6 +10,7 @@ class ValidateSecondFactorAuthRequest extends FormRequest
     {
         return [
             'secret_key' => 'required|string',
+            'bearer_token_tecbase' => 'required|string',
         ];
     }
 }

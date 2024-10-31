@@ -2,6 +2,7 @@
 
 namespace VieiraTecnol\Tecbase2FA;
 
+use App\Models\TempUser;
 use Closure;
 use Illuminate\Http\Request;
 use VieiraTecnol\Tecbase2FA\PersonalAccessToken as Tecbase2FAPersonalAccessToken;
@@ -39,6 +40,7 @@ class Tecbase2FA
         $response = [
             'message' => 'Login realizado com sucesso',
             'access_token' => $token->plainTextToken,
+            'tecbase_access_token' => $request->bearer_token_tecbase,
             'expires_at' => now()->addHour(),
             'token_type' => 'Bearer',
             'user' => [
@@ -58,6 +60,10 @@ class Tecbase2FA
                 'active' => $request->active,
             ]
         ];
+
+        $tempUser = new TempUser($response['user']);
+
+        session()->put('temp_user', $tempUser);
 
         return response()->json($response);
     }
