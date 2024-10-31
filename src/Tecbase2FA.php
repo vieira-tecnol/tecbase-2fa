@@ -40,7 +40,7 @@ class Tecbase2FA
         $response = [
             'message' => 'Login realizado com sucesso',
             'access_token' => $token->plainTextToken,
-            'tecbase_access_token' => $request->bearer_token_tecbase,
+            'tecbase_access_token' => $request->tecbase_access_token,
             'expires_at' => now()->addHour(),
             'token_type' => 'Bearer',
             'user' => [
